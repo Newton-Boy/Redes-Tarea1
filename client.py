@@ -19,6 +19,11 @@ if len(sys.argv) != 6: # Cambio a 6, porque requerimos size IN y OUT adicionalme
     print('Use: '+sys.argv[0]+'size IN OUT host port') #sys.argv[0] es el nombre del archivo .py, host=127.0.0.1, y port=?
     sys.exit(1)
 
+
+size=sys.argv[1] # Cantidad de I/Os de sockets y archivos
+IN=sys.argv[2]   # Archivo Binario de Entrada
+OUT=sys.argv[3]  # Archivo Binario de Salida
+
 s = jsockets.socket_tcp_connect(sys.argv[4], sys.argv[5])
 if s is None:
     print('could not open socket')
