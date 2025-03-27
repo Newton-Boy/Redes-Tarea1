@@ -32,6 +32,12 @@ newthread.start()
 for line in sys.stdin:
     s.send(line.encode())
 
+# Me parece que debo cambiar stdin por IN para enviar archivos binarios hacia el socket, 
+# y stdout por OUT leer archivos desde socket a esté. (Este ultimo no lo veo tan inmediato)
+
+for line in IN:
+    s.send(line.encode())
+
 time.sleep(3)  # dar tiempo para que vuelva la respuesta
 s.close()
 
