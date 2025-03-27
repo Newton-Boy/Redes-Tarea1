@@ -15,11 +15,11 @@ def Rdr(s):
             break
         print(data, end = '')
 
-if len(sys.argv) != 3:
-    print('Use: '+sys.argv[0]+' host port')
+if len(sys.argv) != 6: # Cambio a 6, porque requerimos size IN y OUT adicionalmente
+    print('Use: '+sys.argv[0]+'size IN OUT host port') #sys.argv[0] es el nombre del archivo .py, host=127.0.0.1, y port=?
     sys.exit(1)
 
-s = jsockets.socket_tcp_connect(sys.argv[1], sys.argv[2])
+s = jsockets.socket_tcp_connect(sys.argv[4], sys.argv[5])
 if s is None:
     print('could not open socket')
     sys.exit(1)

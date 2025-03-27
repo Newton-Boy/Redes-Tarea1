@@ -12,10 +12,10 @@ class ClientThread(threading.Thread):
     def run(self):
         print('Cliente Conectado')
  
-        while True:
+        while True: # Escucho hasta que no me hablen más
             data = self.sock.recv(1024*1024)
             if not data: break
-            self.sock.send(data)
+            self.sock.send(data) # Retorno la el mismo dato que me pasaron
         self.sock.close()
         print('Cliente desconectado')
 
@@ -25,6 +25,6 @@ if s is None:
     print('could not open socket')
     sys.exit(1)
 while True:
-    conn, addr = s.accept()
-    newthread = ClientThread(addr, conn)
+    conn, addr = s.accept()  # Espero a conectar con un cliente, acción bloqueante
+    newthread = ClientThread(addr, conn) # Creo Thread que inicializará ClientThread
     newthread.start()
